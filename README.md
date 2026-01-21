@@ -1,54 +1,91 @@
-# QR Pro Studio
+# Design Fuze QR Code Generator
 
-QR Pro Studio is a modern, offline-ready web application that lets you generate permanent QR codes without using any third-party service.
+A modern, fast, and fully client-side QR Code Generator built for businesses, creators, and agencies.
+This tool generates **permanent QR codes that never expire** and works directly in the browser without any server or third-party API.
 
-The QR codes created using this app never expire because all data is stored directly inside the QR code.
-
----
-
-## Features
-
-- Generate QR codes for:
-  - Websites and links
-  - WhatsApp
-  - Phone numbers
-  - Email
-  - Plain text
-- Choose custom QR color
-- Select different QR sizes
-- Download QR as PNG and SVG
-- Save QR codes in local library
-- Favorite saved QR codes
-- Dark and light mode
-- Installable as a mobile app (PWA)
-- Works offline after first load
-- No login required
-- No tracking
-- QR codes never expire
+Developed by **Md Maaz Alam** for **Design Fuze**.
 
 ---
 
-## Technologies Used
+## Key Features
 
-- HTML
-- CSS
-- JavaScript
-- QRious
-- HTML to Image
-- Progressive Web App (PWA)
-- LocalStorage
+* Generate QR codes for
+
+  * Websites and text
+  * WhatsApp numbers
+  * Phone numbers
+  * Email addresses
+* QR codes never expire
+* Download QR in PNG format
+* Download QR in SVG format
+* Save QR codes in a local library
+* Dark and Light mode
+* Works offline after first load
+* Installable as a mobile app (PWA)
+* Clean and modern UI
+* Fully mobile and desktop friendly
+* No ads, no tracking, no external servers
 
 ---
 
-## File Structure
+## Project Structure
 
-qr-pro-studio  
-│  
-├── index.html  
-├── style.css  
-├── app.js  
-├── manifest.json  
-└── service-worker.js  
+```
+qr-pro-studio/
+│
+├── index.html
+├── style.css
+├── app.js
+├── manifest.json
+└── service-worker.js
+```
+
+---
+
+## How to Use
+
+1. Clone or download this repository
+2. Open `index.html` in any modern browser
+3. Enter a link, number, or text
+4. Click **Generate QR**
+5. Download or save your QR
+
+No installation or backend required.
+
+---
+
+## Install as an App
+
+On mobile or desktop:
+
+1. Open the website in Chrome
+2. Click **Add to Home Screen** or **Install App**
+3. Use it like a native app
+
+---
+
+## Why QR Codes Never Expire
+
+This tool generates **direct QR codes** that store your data inside the QR image itself.
+There is no redirect server and no third-party service involved.
+
+Even after years, your QR will still scan and work.
+
+---
+
+## Author
+
+**Md Maaz Alam**
+Gravatar: [https://gravatar.com/maazalam04](https://gravatar.com/maazalam04)
+
+Built for **Design Fuze**
+
+---
+
+## License
+
+Free to use for personal and commercial projects.
+Attribution is appreciated but not required.
 
 ---
 
