@@ -2,16 +2,21 @@ let canvas = document.getElementById("qrCanvas");
 let qr = new QRious({ element: canvas, size: 400 });
 
 function generateQR(){
-  let type = typeSelect = document.getElementById("type").value;
+  let type = document.getElementById("type").value;
   let data = document.getElementById("data").value;
   let color = document.getElementById("color").value;
   let size = document.getElementById("size").value;
 
-  if(type=="whatsapp") data="https://wa.me/"+data;
-  if(type=="phone") data="tel:"+data;
-  if(type=="email") data="mailto:"+data;
+  if(!data){
+    alert("Enter something");
+    return;
+  }
 
-  qr.set({value:data,size:size,foreground:color});
+  if(type==="whatsapp") data="https://wa.me/"+data;
+  if(type==="phone") data="tel:"+data;
+  if(type==="email") data="mailto:"+data;
+
+  qr.set({ value:data, size:size, foreground:color });
 }
 
 function downloadPNG(){
@@ -31,9 +36,38 @@ function downloadSVG(){
 }
 
 function saveQR(){
-  let name=prompt("Enter QR name");
+  let name=prompt("QR name");
+  if(!name) return;
+
   let list=JSON.parse(localStorage.getItem("qrList"))||[];
-  list.push({name,img:canvas.toDataURL(),fav:false});
+  list.push({name,img:canvas.toDataURL()});
+  localStorage.setItem("qrList",JSON.stringify(list));
+  loadLibrary();
+}
+
+function loadLibrary(){
+  let lib=document.getElementById("library");
+  lib.innerHTML="";
+  let list=JSON.parse(localStorage.getItem("qrList"))||[];
+  list.forEach(q=>{
+    let d=document.createElement("div");
+    d.innerHTML=`<b>${q.name}</b><br><img src="${q.img}" width="80">`;
+    lib.appendChild(d);
+  });
+}
+
+loadLibrary();
+
+const themeSwitch=document.getElementById("themeSwitch");
+if(localStorage.getItem("theme")==="dark"){
+  document.body.classList.add("dark");
+  themeSwitch.checked=true;
+}
+
+themeSwitch.addEventListener("change",()=>{
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", themeSwitch.checked ? "dark" : "light");
+});
   localStorage.setItem("qrList",JSON.stringify(list));
   loadLibrary();
 }
