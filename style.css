@@ -1,0 +1,124 @@
+:root{
+  --bg1:#1d4ed8;
+  --bg2:#0f172a;
+  --card:rgba(255,255,255,0.12);
+  --text:white;
+  --muted:#cbd5f5;
+}
+
+body.light{
+  --bg1:#e5e7eb;
+  --bg2:#f9fafb;
+  --card:white;
+  --text:#111827;
+  --muted:#4b5563;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  font-family:system-ui;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.app{
+  width:100%;
+  max-width:460px;
+  background:var(--card);
+  backdrop-filter:blur(18px);
+  border-radius:18px;
+  padding:22px;
+  color:var(--text);
+  box-shadow:0 25px 60px rgba(0,0,0,0.4);
+  animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+h1{text-align:center;margin-bottom:5px;}
+p{text-align:center;color:var(--muted);}
+
+input,select{
+  width:100%;
+  padding:12px;
+  margin:8px 0 14px;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,.15);
+  color:var(--text);
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#3b82f6,#06b6d4);
+  color:white;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{transform:translateY(-2px);}
+
+.actions{display:flex;gap:10px;}
+.actions button{background:linear-gradient(135deg,#22c55e,#16a34a);}
+
+canvas{
+  display:block;
+  margin:18px auto;
+  background:white;
+  padding:10px;
+  border-radius:12px;
+}
+
+#library div{
+  background:rgba(255,255,255,.12);
+  padding:10px;
+  border-radius:12px;
+  margin:10px 0;
+}
+
+footer{text-align:center;margin-top:18px;}
+footer a{color:#93c5fd;text-decoration:none;}
+
+.themeToggle{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+
+.switch{
+  position:relative;
+  width:42px;
+  height:22px;
+}
+
+.switch input{opacity:0;}
+.slider{
+  position:absolute;
+  inset:0;
+  background:#94a3b8;
+  border-radius:20px;
+}
+.slider:before{
+  content:"";
+  position:absolute;
+  height:16px;
+  width:16px;
+  left:3px;
+  bottom:3px;
+  background:white;
+  border-radius:50%;
+  transition:.3s;
+}
+.switch input:checked + .slider:before{transform:translateX(20px);}
