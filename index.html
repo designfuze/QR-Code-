@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QR Pro Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+</head>
+
+<body>
+
+<div class="app">
+
+<h1>QR Pro Studio</h1>
+
+<div class="themeToggle">
+  <span>☀</span>
+  <label class="switch">
+    <input type="checkbox" id="themeSwitch">
+    <span class="slider"></span>
+  </label>
+  <span>🌙</span>
+</div>
+
+<p>Create permanent QR codes</p>
+
+<select id="type">
+  <option value="text">Text / Website</option>
+  <option value="whatsapp">WhatsApp</option>
+  <option value="phone">Phone</option>
+  <option value="email">Email</option>
+</select>
+
+<input id="data" placeholder="Enter website, number or text">
+
+<label>QR Color</label>
+<input type="color" id="color" value="#000000">
+
+<label>Size</label>
+<select id="size">
+  <option value="300">Medium</option>
+  <option value="500">Large</option>
+  <option value="800">Print Quality</option>
+</select>
+
+<button onclick="generateQR()">Generate QR</button>
+
+<div id="qrWrap">
+  <canvas id="qrCanvas"></canvas>
+</div>
+
+<div class="actions">
+  <button onclick="downloadPNG()">PNG</button>
+  <button onclick="downloadSVG()">SVG</button>
+  <button onclick="saveQR()">Save</button>
+</div>
+
+<h3>Your QR Library</h3>
+<div id="library"></div>
+
+<footer>
+Designed & Developed by
+<a href="https://gravatar.com/maazalam04" target="_blank">Md Maaz Alam</a>
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image/dist/html-to-image.min.js"></script>
+<script src="app.js"></script>
+
+<script>
+const oldGenerate = window.generateQR;
+window.generateQR = function(){
+  const c = document.getElementById("qrCanvas");
+  c.style.opacity = 0;
+  setTimeout(()=>{
+    oldGenerate();
+    c.style.opacity = 1;
+  },150);
+}
+</script>
+
+</body>
+</html>
